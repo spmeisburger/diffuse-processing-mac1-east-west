@@ -26,6 +26,9 @@ _crystal_types:
         reference_pdb_file: data/reference/7kqo.pdb
         resolution: 1.25
 
+# obtained the pdb file like this:
+# datalad download-url https://files.rcsb.org/download/7KQO.pdb --path data/reference/7kqo.pdb --message "Add 7kqo.pdb to data/reference from rcsb"
+
 # datasets have the following fields:
 # - master_file_template
 # - data_file_template
@@ -56,9 +59,13 @@ processing_groups:
             - dataset: als_20251015_mac1_12
 """)
 
+onstart:
+    print("Checking reference data and downloading if needed")
+    shell("datalad get data/reference")
+
 rule all:
     input:
-        "results/datasets/als_20251015_mac1_10/scaled.expt"
+        "results/processing_groups/als_20251015_mac1/scaled.expt"
 
 def get_dataset_filenames(wildcards):
     dataset_config = config["datasets"][wildcards.dataset]
@@ -292,6 +299,7 @@ rule dials_reindex:
         """
         dials.reindex {input.expt:q} {input.refl:q} \
             {params.reindex_args:q} \
+            reference.file={input.reference:q} \
             output.experiments={output.expt:q} \
             output.reflections={output.refl:q} \
             output.log={output.log:q} \
