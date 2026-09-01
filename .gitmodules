@@ -1,0 +1,5 @@
+[submodule "data/raw"]
+	path = data/raw
+	url = https://github.com/spmeisburger/diffuse-data-pub-mac1-east-west
+	datalad-id = f43bfbb0-5fd2-4f3b-ab7d-9f3f5be2e309
+	datalad-url = https://github.com/spmeisburger/diffuse-data-pub-mac1-east-west
