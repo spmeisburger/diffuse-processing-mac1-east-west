@@ -6,10 +6,6 @@ onstart:
     print("Checking reference data and downloading if needed")
     shell("datalad get data/reference")
 
-rule all:
-    input:
-        expand("results/processing_groups/{processing_group}/scaled.expt", processing_group=config["processing_groups"])
-
 def get_dataset_filenames(wildcards):
     dataset_config = config["datasets"][wildcards.dataset]
     prefix = dataset_config["prefix"]

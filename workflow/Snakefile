@@ -2,5 +2,9 @@
 
 configfile: "config/config.yaml"
 
+rule all:
+    input:
+        expand("results/processing_groups/{processing_group}/scaled.expt", processing_group=config["processing_groups"])
+
 include: "rules/common.smk" 
 include: "rules/dials.smk"
