@@ -28,9 +28,35 @@ rule dials_import:
         }} > {log.stdout:q} 2> {log.stderr:q}
         """
 
-rule dials_find_spots:
+rule dials_generate_mask:
     input:
         expt=rules.dials_import.output.expt
+    output:
+        expt="results/datasets/{dataset}/masked.expt",
+        mask="results/datasets/{dataset}/pixels.mask",
+        log="results/datasets/{dataset}/dials.generate_mask.log"
+    log:
+        stdout="logs/datasets/{dataset}/dials.generate_mask.stdout",
+        stderr="logs/datasets/{dataset}/dials.generate_mask.stderr"
+    conda: CONDA_ENV
+    params:
+        generate_mask_args=lookup(within=config, dpath="datasets/{dataset}/dials/generate_mask", default=[])
+    shell:
+        """
+        {{
+        dials.generate_mask {input.expt:q} \
+            {params.generate_mask_args:q} \
+            output.experiments={output.expt:q} \
+            output.mask={output.mask:q} \
+            output.log={output.log:q}
+        bash {STRIP_ABSPATH_SCRIPT} {output.expt:q}
+        bash {STRIP_ABSPATH_SCRIPT} {output.log:q}
+        }} > {log.stdout:q} 2> {log.stderr:q}
+        """
+
+rule dials_find_spots:
+    input:
+        expt=rules.dials_generate_mask.output.expt
     output:
         refl="results/datasets/{dataset}/strong.refl",
         log="results/datasets/{dataset}/dials.find_spots.log"
