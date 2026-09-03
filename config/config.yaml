@@ -192,6 +192,8 @@ datasets:
         prefix: data/raw/als_20251125/mac1_2/background/mac1_2_bg_2
         image_range: [1, 2]
         dials:
+            import:
+                - "geometry.scan.oscillation=0,1"
             generate_mask: *als_20251125_mask
     als_20251125_mac1_4:
         <<: *als_cbf
@@ -206,6 +208,8 @@ datasets:
         prefix: data/raw/als_20251125/mac1_4/background/mac1_4_bg_2
         image_range: [1, 2]
         dials:
+            import:
+                - "geometry.scan.oscillation=0,1"
             generate_mask: *als_20251125_mask
 
 processing_groups:
