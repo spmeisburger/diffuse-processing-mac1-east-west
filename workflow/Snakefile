@@ -3,10 +3,4 @@
 configfile: "config/config.yaml"
 
 include: "rules/common.smk" 
-
-rule all:
-    input:
-        "results/processing_groups/als_20251015_mac1/scaled.expt",
-        "results/processing_groups/chess_20251105_mac1/scaled.expt"
-
 include: "rules/dials.smk"
