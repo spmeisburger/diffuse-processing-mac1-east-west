@@ -42,6 +42,22 @@ _dials_generate_mask_args:
         - "untrusted.circle=1920,2354,38"
         - "untrusted.pixel=4213,2778"
 
+# default mdx2 parameter sets for crystal and background dataset processing
+_mdx2_params:
+    mac1: &mdx2_params_mac1
+        find_peaks:
+            count_threshold: 10
+        integrate:
+            subdivide: [2, 2, 4]
+    bg_als: &mdx2_params_bg_als
+        bin_image_series:
+            valid_range: [0, 100]
+            number_per_bin: [5, 10, 10]
+    bg_chess: &mdx2_params_bg_chess
+        bin_image_series:
+            valid_range: [0, 100]
+            number_per_bin: [5, 20, 20]
+
 
 # datasets have the following fields:
 # - master_file_template
@@ -70,26 +86,37 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: chess_20250924_mac1_5_bg
     chess_20250924_mac1_5_bg:
         <<: *chess_h5_bg
         prefix: data/raw/chess_20250924/mac1_5/background/mac1_5_bg_62
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_bg_chess
     chess_20250924_mac1_2:
         <<: *chess_h5
         prefix: data/raw/chess_20250924/mac1_2/crystal/mac1_3_50
+        # ^ not a typo, the file was misnamed
         image_range: [1, 20]
         crystal:
             <<: *mac1_p43
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: chess_20250924_mac1_2_bg
     chess_20250924_mac1_2_bg:
         <<: *chess_h5_bg
         prefix: data/raw/chess_20250924/mac1_2/background/mac1_2_bg_51
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_bg_chess
     chess_20250924_mac1_3:
         <<: *chess_h5
         prefix: data/raw/chess_20250924/mac1_3/crystal/mac1_3_54
@@ -98,12 +125,17 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: chess_20250924_mac1_3_bg
     chess_20250924_mac1_3_bg:
         <<: *chess_h5_bg
         prefix: data/raw/chess_20250924/mac1_3/background/mac1_3_bg_55
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *chess_20250924_mask
+        mdx2:
+            <<: *mdx2_params_bg_chess
     als_20251015_mac1_10:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_10/crystal/mac1_10_1
@@ -112,12 +144,17 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: als_20251015_mac1_10_bg
     als_20251015_mac1_10_bg:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_10/background/mac1_10_bg_1_2
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_bg_als
     als_20251015_mac1_12:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_12/crystal/mac1_12_1
@@ -131,12 +168,17 @@ datasets:
         #         image_range: [16, 30]
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: als_20251015_mac1_12_bg
     als_20251015_mac1_12_bg:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_12/background/mac1_12_bg_1_2
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_bg_als
     als_20251015_mac1_13:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_13/crystal/mac1_13_1
@@ -145,12 +187,17 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: als_20251015_mac1_13_bg
     als_20251015_mac1_13_bg:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_13/background/mac1_13_bg_1_2
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             generate_mask: *als_20251015_mask
+        mdx2:
+            <<: *mdx2_params_bg_als
     chess_20251105_mac1_4:
         <<: *chess_h5
         prefix: data/raw/chess_20251105/mac1_4/crystal/mac1_4_3634
@@ -159,10 +206,15 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *chess_20251105_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: chess_20251105_mac1_4_bg
     chess_20251105_mac1_4_bg:
         <<: *chess_h5_bg
         prefix: data/raw/chess_20251105/mac1_4/background/mac1_4_bg_3635
-        image_range: [1, 3]
+        mdx2:
+            <<: *mdx2_params_bg_chess
+        image_range: [1, 10]
         dials:
             generate_mask: *chess_20251105_mask
     chess_20251105_mac1_5:
@@ -173,10 +225,15 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *chess_20251105_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: chess_20251105_mac1_5_bg
     chess_20251105_mac1_5_bg:
         <<: *chess_h5_bg
         prefix: data/raw/chess_20251105/mac1_5/background/mac1_5_bg_3639
-        image_range: [1, 3]
+        image_range: [1, 10]
+        mdx2:
+            <<: *mdx2_params_bg_chess
         dials:
             generate_mask: *chess_20251105_mask
     als_20251125_mac1_2:
@@ -187,10 +244,15 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *als_20251125_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: als_20251125_mac1_2_bg
     als_20251125_mac1_2_bg:
         <<: *als_cbf
         prefix: data/raw/als_20251125/mac1_2/background/mac1_2_bg_2
-        image_range: [1, 2]
+        image_range: [1, 10]
+        mdx2:
+            <<: *mdx2_params_bg_als
         dials:
             import:
                 - "geometry.scan.oscillation=0,1"
@@ -203,14 +265,19 @@ datasets:
             <<: *mac1_p43
         dials:
             generate_mask: *als_20251125_mask
+        mdx2:
+            <<: *mdx2_params_mac1
+        background_dataset: als_20251125_mac1_4_bg
     als_20251125_mac1_4_bg:
         <<: *als_cbf
         prefix: data/raw/als_20251125/mac1_4/background/mac1_4_bg_2
-        image_range: [1, 2]
+        image_range: [1, 10]
         dials:
             import:
                 - "geometry.scan.oscillation=0,1"
             generate_mask: *als_20251125_mask
+        mdx2:
+            <<: *mdx2_params_bg_als
 
 processing_groups:
     chess_20250924_mac1:
@@ -218,35 +285,25 @@ processing_groups:
             <<: *mac1_p43
         members:
             - dataset: chess_20250924_mac1_5
-              background_dataset: chess_20250924_mac1_5_bg
             - dataset: chess_20250924_mac1_2
-              background_dataset: chess_20250924_mac1_2_bg
             - dataset: chess_20250924_mac1_3
-              background_dataset: chess_20250924_mac1_3_bg
     als_20251015_mac1:
         crystal:
             <<: *mac1_p43
         members:
             - dataset: als_20251015_mac1_10
-              background_dataset: als_20251015_mac1_10_bg
             - dataset: als_20251015_mac1_12
               #subset: first_half
-              background_dataset: als_20251015_mac1_12_bg
             - dataset: als_20251015_mac1_13
-              background_dataset: als_20251015_mac1_13_bg
     chess_20251105_mac1:
         crystal:
             <<: *mac1_p43
         members:
             - dataset: chess_20251105_mac1_4
-              background_dataset: chess_20251105_mac1_4_bg
             - dataset: chess_20251105_mac1_5
-              background_dataset: chess_20251105_mac1_5_bg
     als_20251125_mac1:
         crystal:
             <<: *mac1_p43
         members:
             - dataset: als_20251125_mac1_2
-              background_dataset: als_20251125_mac1_2_bg
             - dataset: als_20251125_mac1_4
-              background_dataset: als_20251125_mac1_4_bg

@@ -4,7 +4,9 @@ configfile: "config/config.yaml"
 
 rule all:
     input:
-        expand("results/processing_groups/{processing_group}/scaled.expt", processing_group=config["processing_groups"])
+        expand("results/processing_groups/{processing_group}/scaled.expt", processing_group=config["processing_groups"]),
+        "results/datasets/als_20251125_mac1_4/corrected.nxs"
 
 include: "rules/common.smk" 
 include: "rules/dials.smk"
+include: "rules/mdx2.smk"
