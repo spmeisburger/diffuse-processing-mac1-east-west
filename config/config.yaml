@@ -81,7 +81,7 @@ datasets:
     chess_20250924_mac1_5:
         <<: *chess_h5
         prefix: data/raw/chess_20250924/mac1_5/crystal/mac1_5_61
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -101,7 +101,7 @@ datasets:
         <<: *chess_h5
         prefix: data/raw/chess_20250924/mac1_2/crystal/mac1_3_50
         # ^ not a typo, the file was misnamed
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -120,7 +120,7 @@ datasets:
     chess_20250924_mac1_3:
         <<: *chess_h5
         prefix: data/raw/chess_20250924/mac1_3/crystal/mac1_3_54
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -139,7 +139,7 @@ datasets:
     als_20251015_mac1_10:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_10/crystal/mac1_10_1
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -158,7 +158,7 @@ datasets:
     als_20251015_mac1_12:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_12/crystal/mac1_12_1
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         # subsets:
@@ -182,7 +182,7 @@ datasets:
     als_20251015_mac1_13:
         <<: *als_cbf
         prefix: data/raw/als_20251015/mac1_13/crystal/mac1_13_1
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -201,7 +201,7 @@ datasets:
     chess_20251105_mac1_4:
         <<: *chess_h5
         prefix: data/raw/chess_20251105/mac1_4/crystal/mac1_4_3634
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -220,7 +220,7 @@ datasets:
     chess_20251105_mac1_5:
         <<: *chess_h5
         prefix: data/raw/chess_20251105/mac1_5/crystal/mac1_5_3638
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -239,7 +239,7 @@ datasets:
     als_20251125_mac1_2:
         <<: *als_cbf
         prefix: data/raw/als_20251125/mac1_2/crystal/mac1_2_data_1
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
@@ -260,7 +260,7 @@ datasets:
     als_20251125_mac1_4:
         <<: *als_cbf
         prefix: data/raw/als_20251125/mac1_4/crystal/mac1_4_data_1
-        image_range: [1, 30]
+        image_range: [1, 50]
         crystal:
             <<: *mac1_p43
         dials:
