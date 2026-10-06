@@ -1,1 +1,1 @@
-../../.git/annex/objects/M5/8j/MD5E-s13461--cc33725d616c356033bfd69d2422cd63.smk/MD5E-s13461--cc33725d616c356033bfd69d2422cd63.smk
+/annex/objects/MD5E-s13461--cc33725d616c356033bfd69d2422cd63.smk
