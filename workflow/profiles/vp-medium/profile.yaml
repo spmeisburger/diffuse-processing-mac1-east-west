@@ -1,5 +1,5 @@
-cores: 32
+cores: 64
 use-conda: true
 resources:
   - datalad_slots=1
-  - mem_mb=64000
+  - mem_mb=256000
