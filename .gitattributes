@@ -1,2 +1,6 @@
 * annex.backend=MD5E
 **/.git* annex.largefiles=nothing
+
+# Track all standard plain text files in Git instead of git-annex
+workflow/** annex.largefiles=nothing
+config/** annex.largefiles=nothing
