@@ -1,0 +1,19 @@
+channels:
+  - conda-forge
+dependencies:
+  - python == 3.14
+  - dials == 3.27
+  - nexusformat
+  - pandas
+  - scipy
+  - numexpr
+  - joblib
+  - matplotlib
+  - ipykernel
+  - xarray
+  - loguru
+  - simple-parsing
+  - papermill
+  - pip:
+    - git+https://github.com/prism-science/mdx2.git@spm/cli-logging-config
+    - git+https://github.com/FlexXBeamline/dials-extensions
