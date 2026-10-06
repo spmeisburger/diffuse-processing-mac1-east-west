@@ -1,2 +1,4 @@
 cores: 4
 use-conda: true
+resources:
+  - datalad_slots=1

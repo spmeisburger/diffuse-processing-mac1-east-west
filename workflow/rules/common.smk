@@ -30,6 +30,8 @@ rule fetch_dataset:
         temporary("results/datasets/{dataset}/image_files.txt") # always trigger fetch when images are needed, in case datalad drop is called at some point
     params:
         filenames = get_dataset_filenames
+    resources:
+        datalad_slots=1
     shell:
         """
         filenames="{params.filenames}" && \
